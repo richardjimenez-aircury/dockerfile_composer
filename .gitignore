@@ -4,7 +4,7 @@
 # Ignore all pid
 *.pid
 
-# Ignore Vendor
+# Ignore Vendor folder but allow its installation
 vendor/
 
 # Ignore SRC
