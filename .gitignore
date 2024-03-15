@@ -1,0 +1,11 @@
+# Ignore all logs
+*.log
+
+# Ignore all pid
+*.pid
+
+# Ignore Vendor
+vendor/
+
+# Ignore SRC
+src/
