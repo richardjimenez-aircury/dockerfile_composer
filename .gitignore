@@ -9,3 +9,6 @@ vendor/
 
 # Ignore SRC
 src/
+
+# Ignore cache
+.cache

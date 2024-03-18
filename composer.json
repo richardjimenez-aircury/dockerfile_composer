@@ -1,9 +1,21 @@
 {
     "name": "root/app",
+    "description": "Test project to learn how to use phpinut",
+    "type": "project",
     "autoload": {
         "psr-4": {
             "Root\\App\\": "src/"
         }
     },
-    "require": {}
+    "authors": [
+        {
+            "name": "Richard"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "require": {
+        "spatie/phpunit-watcher": "^1.23"
+    }
 }
