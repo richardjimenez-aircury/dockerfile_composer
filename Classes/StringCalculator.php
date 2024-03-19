@@ -9,10 +9,17 @@ class StringCalculator
         if ($numbers === '') {
             return 0;
         }
-        if (preg_match('[^0-9]', $numbers)) {
-            $numbers = preg_replace('[,/\n;]', '&', $numbers);
-            $arr = explode('&', $numbers);
-            return array_sum($arr);
+        #check if contains a non-numeric character
+        if (preg_match('[^\d]', $numbers)) {
+            $invalidSymbols=['\n', ';', ',', '/'];
+            $replaced=str_replace($invalidSymbols, ',', $numbers);
+            $divided = explode(',', $replaced);
+
+            $negatives=array_filter($divided, fn($number)=> $number < 0);
+            if (count($negatives) > 0) {
+                echo "negatives not allowed: ".implode(',', $negatives)." ";
+            }
+            return (int)array_sum($divided);
         }
 
         return (int)$numbers;
