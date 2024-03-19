@@ -5,6 +5,11 @@ RUN apt-get update && apt-get install -yq gnupg supervisor
 # INSTALO GIT
 RUN apt-get install -y git zip unzip
 
+# INSTALO XDEBUG
+RUN pecl install xdebug
+
+RUN docker-php-ext-enable xdebug
+
 # INSTALO COMPOSER, PERO NO ME QUEDA CLARO POR QUÉ ES UN COPY Y NO UN RUN
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
