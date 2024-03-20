@@ -72,5 +72,13 @@ final class StringCalculatorTest extends TestCase
         $this->assertSame(6, $res);
     }
 
+    public function testAddMethodCanHandleMultipleDelimiters(){
+        $res = StringCalculator::add(<<<TEXT
+        //[*][%]\n1*2%3
+        TEXT
+        );
+        $this->assertSame(6, $res);
+    }
+
 
 }
