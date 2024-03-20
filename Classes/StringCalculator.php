@@ -20,7 +20,7 @@ class StringCalculator
             $replaced = str_replace($invalidSymbols, ',', $numbers);
 
             $divided = explode(',', $replaced);
-            $withoutSpaces = array_filter($divided, fn($number) => $number !== '' && $number <= 999);
+            $withoutSpaces = array_filter($divided, fn($number) => $number !== '' && $number <= 1000);
 
             #check for negatives
             $negatives = array_filter($withoutSpaces, fn($number) => $number < 0);
