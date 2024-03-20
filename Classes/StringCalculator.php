@@ -16,7 +16,7 @@ class StringCalculator
         }
 
         if (preg_match('/\D*/', $numbers)) {
-            $invalidSymbols = ["\n", ';', '/', ' ',':'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
+            $invalidSymbols = [PHP_EOL, ';', '/', ' ',':', '*', '[', ']'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
             $replaced = str_replace($invalidSymbols, ',', $numbers);
 
             $divided = explode(',', $replaced);
