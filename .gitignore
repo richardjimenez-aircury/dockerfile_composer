@@ -12,3 +12,6 @@ src/
 
 # Ignore cache
 .cache
+
+#Ignore the phpunit.cache with it's contents
+.phpunit.cache/
