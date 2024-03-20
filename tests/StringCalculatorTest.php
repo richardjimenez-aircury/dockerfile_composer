@@ -35,7 +35,8 @@ final class StringCalculatorTest extends TestCase
     {
         $res = StringCalculator::add(<<<TEXT
         1\n2,3;4\n5
-        TEXT);
+        TEXT
+        );
         $this->assertSame(15, $res);
     }
 
@@ -55,5 +56,12 @@ final class StringCalculatorTest extends TestCase
         $this->expectExceptionMessage('negatives not allowed: -2,-4');
         $res = StringCalculator::add('1;-2:-4;3');
     }
+
+    public function testAddMethodIgnoresNumbersGreaterThan1000()
+    {
+        $res = StringCalculator::add('1,1001,2,3');
+        $this->assertSame(6, $res);
+    }
+
 
 }
