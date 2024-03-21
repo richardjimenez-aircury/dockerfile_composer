@@ -10,8 +10,11 @@ vendor/
 # Ignore SRC
 src/
 
-# Ignore cache
-.cache
+# Ignore cache files
+*.cache
 
 #Ignore the phpunit.cache with it's contents
-.phpunit.cache/
+./.phpunit.cache/
+
+# Second try to ignore the phpunit.cache folder
+.phpunit.cache

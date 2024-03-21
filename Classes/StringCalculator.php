@@ -4,8 +4,6 @@ use function PHPUnit\Framework\throwException;
 
 class StringCalculator
 {
-
-
     /**
      * @throws Exception
      */
