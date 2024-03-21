@@ -4,8 +4,6 @@ use function PHPUnit\Framework\throwException;
 
 class StringCalculator
 {
-
-
     /**
      * @throws Exception
      */
@@ -16,7 +14,7 @@ class StringCalculator
         }
 
         if (preg_match('/\D*/', $numbers)) {
-            $invalidSymbols = ['\n', ';', '/', ' ',':', '*', '[', ']', '%'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
+            $invalidSymbols = ["\n", ';', '/', ' ',':', '*', '[', ']', '%'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
             $replaced = str_replace($invalidSymbols, ',', $numbers);
 
             $divided = explode(',', $replaced);
