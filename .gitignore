@@ -18,3 +18,8 @@ src/
 
 # Second try to ignore the phpunit.cache folder
 .phpunit.cache
+
+# Ignore Idea
+.idea/
+
+

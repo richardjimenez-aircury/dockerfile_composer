@@ -4,18 +4,21 @@ class PasswordValidation
 {
     public static function verifyPassword(string $password): bool|string
     {
-        $error = '';
+        $errors = [];
+
         if (strlen($password) < 8) {
-            $error .= "Password must contain at least 8 characters \n";
+            $errors[] = "Password must contain at least 8 characters";
         }
 
-        if (preg_match('/\d*/', $password)) {
+        if (preg_match('/\d/', $password)) {
             $numbers = preg_replace('/\D*/', '&', $password);
-            if (count(explode('&', $numbers)) < 2) {
-                $error .= "Password must contain at least two numbers \n";
+            $divided= explode('&', $numbers);
+            $numbersAlone=array_filter($divided, fn($number) => $number !== '');
+            if (count($numbersAlone) < 2) {
+                $errors[] = "Password must contain at least two numbers";
             }
         }
 
-        return $error === '' ? true . ' Password is valid' : false . $error;
+        return empty($errors) ? true . ' Password is valid' : false . implode("\n", $errors);
     }
 }

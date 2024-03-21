@@ -15,13 +15,18 @@ final class PasswordValidationTest extends TestCase
 
     public function testPasswordContainsAtLeastTwoNumbers()
     {
-        $res = PasswordValidation::verifyPassword('secret89');
+        $res = PasswordValidation::verifyPassword('8secret9');
         $this->assertSame(true . ' Password is valid', $res);
     }
 
     public function testMethodCanHandleMultipleValidationErrors()
     {
-        $res = PasswordValidation::verifyPassword('secret');
-        $this->assertSame(false . "Password must contain at least 8 characters \nPassword must contain at least two numbers \n", $res);
+        $res = PasswordValidation::verifyPassword('secr8el');
+        $messages = [
+            'Password must contain at least 8 characters',
+            'Password must contain at least two numbers'
+        ];
+
+        $this->assertSame(false . implode("\n", $messages), $res);
     }
 }
