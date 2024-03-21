@@ -13,7 +13,7 @@ final class PasswordValidationTest extends TestCase{
     }
     public function testPasswordContainsAtLeastTwoNumbers()
     {
-        $res = PasswordValidation::verifyPassword('secret78');
+        $res = PasswordValidation::verifyPassword('secret89');
         $this->assertSame(true.' Password is valid', $res);
     }
 }
