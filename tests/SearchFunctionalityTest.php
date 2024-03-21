@@ -5,8 +5,13 @@ use PHPUnit\Framework\TestCase;
 require_once('./Classes/CitySearch.php');
 final class SearchFunctionalityTest extends TestCase
 {
-    public function testSearchTextIsLongerThanTwoCharacters(){
+    public function testSearchTextIsShorterThanTwoCharacters(){
         $res=CitySearch::searchText('a');
         $this->assertSame(null, $res);
+    }
+    public function testSearchTextIsEqualToOrLongerThanTwoCharacters()
+    {
+        $res=CitySearch::searchText('va');
+        $this->assertSame(['Valencia', 'Vienna'], $res);
     }
 }
