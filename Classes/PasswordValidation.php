@@ -19,6 +19,12 @@ class PasswordValidation
             }
         }
 
+        if (!(preg_match('/[A-Z]+/', $password))){
+            $errors[]= 'Password must contain at least one capital letter';
+        }
+
+
+
         return empty($errors) ? true . ' Password is valid' : false . implode("\n", $errors);
     }
 }
