@@ -23,7 +23,9 @@ class PasswordValidation
             $errors[]= 'Password must contain at least one capital letter';
         }
 
-
+        if (!preg_match('/\W/', $password)){
+            $errors[]= 'Password must contain at least one special character';
+        }
 
         return empty($errors) ? true . ' Password is valid' : false . implode("\n", $errors);
     }

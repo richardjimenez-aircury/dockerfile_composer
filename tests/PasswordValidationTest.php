@@ -9,22 +9,24 @@ final class PasswordValidationTest extends TestCase
 
     public function testPasswordIsAtLeastEightCharacters()
     {
-        $res = PasswordValidation::verifyPassword('12345678Q');
+        $res = PasswordValidation::verifyPassword('12345678Q*');
         $this->assertSame(true . ' Password is valid', $res);
     }
 
     public function testPasswordContainsAtLeastTwoNumbers()
     {
-        $res = PasswordValidation::verifyPassword('8seCret9');
+        $res = PasswordValidation::verifyPassword('8seCret9*');
         $this->assertSame(true . ' Password is valid', $res);
     }
 
     public function testMethodCanHandleMultipleValidationErrors()
     {
-        $res = PasswordValidation::verifyPassword('Secret8');
+        $res = PasswordValidation::verifyPassword('secret8');
         $messages = [
             'Password must contain at least 8 characters',
             'Password must contain at least two numbers',
+            'Password must contain at least one capital letter',
+            'Password must contain at least one special character',
         ];
 
         $this->assertSame(false . implode("\n", $messages), $res);
@@ -32,8 +34,11 @@ final class PasswordValidationTest extends TestCase
 
     public function testPasswordHasAtLeastOneCapitalLetter()
     {
-        $res = PasswordValidation::verifyPassword('Secret89');
+        $res = PasswordValidation::verifyPassword('Secret89*');
         $this->assertSame(true . ' Password is valid', $res);
     }
-
+    public function testPasswordHasAtLeastOneSpecialCharacter(){
+        $res = PasswordValidation::verifyPassword('Secret89');
+        $this->assertSame(false . 'Password must contain at least one special character', $res);
+    }
 }
