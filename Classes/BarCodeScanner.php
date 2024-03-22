@@ -14,6 +14,6 @@ class BarCodeScanner
         if ($barCode === '99999') {
             return 'Error: barcode not Found';
         }
-        return 'Not Found';
+        return 'Error: empty barcode';
     }
 }

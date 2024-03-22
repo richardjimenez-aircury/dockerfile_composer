@@ -19,8 +19,8 @@ final class PointOfSaleTest extends TestCase
         $res= BarCodeScanner::scanBarCode('99999');
         $this->assertSame('Error: barcode not Found', $res);
     }
-//    public function testScannerReceivesEmptyBarCode(){
-//        $res= BarCodeScanner::scanBarCode('');
-//        $this->assertSame('Error: empty barcode', $res);
-//    }
+    public function testScannerReceivesEmptyBarCode(){
+        $res= BarCodeScanner::scanBarCode('');
+        $this->assertSame('Error: empty barcode', $res);
+    }
 }
