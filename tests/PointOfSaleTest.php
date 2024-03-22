@@ -10,4 +10,8 @@ final class PointOfSaleTest extends TestCase
         $res= BarCodeScanner::scanBarCode(12345);
         $this->assertSame('$7.25', $res);
     }
+    public function testScannerShowsRightPrice(){
+        $res= BarCodeScanner::scanBarCode(23456);
+        $this->assertSame('$12.50', $res);
+    }
 }
