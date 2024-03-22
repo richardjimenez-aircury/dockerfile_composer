@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Root\App\Classes\PasswordValidation;
 
-require_once("./Classes/PasswordValidation.php");
+//require_once("./Classes/PasswordValidation.php");
 
 final class PasswordValidationTest extends TestCase
 {

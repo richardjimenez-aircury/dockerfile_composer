@@ -1,11 +1,14 @@
 <?php declare(strict_types=1);
 
+namespace Root\App\Classes;
+
 use function PHPUnit\Framework\throwException;
 
 class StringCalculator
 {
+
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public static function add(string $numbers): int
     {
@@ -14,7 +17,7 @@ class StringCalculator
         }
 
         if (preg_match('/\D*/', $numbers)) {
-            $invalidSymbols = [PHP_EOL, ';', '/', ' ',':', '*', '[', ']'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
+            $invalidSymbols = [PHP_EOL, ';', '/', ' ', ':', '*','%', '[', ']'];#LAS COMILLAS SIMPLES NO RECONOCEN \n COMO SALTO DE LINEA
             $replaced = str_replace($invalidSymbols, ',', $numbers);
 
             $divided = explode(',', $replaced);
@@ -23,8 +26,8 @@ class StringCalculator
             #check for negatives
             $negatives = array_filter($withoutSpaces, fn($number) => $number < 0);
             if (count($negatives) > 0) {
-                throw new InvalidArgumentException(sprintf('negatives not allowed: %s', implode(',', $negatives)));
-                exit();
+                $negativesString = implode(',', $negatives);
+                throw new \InvalidArgumentException("negatives not allowed: $negativesString");
             }
 
             return (int)array_sum($withoutSpaces);
@@ -33,3 +36,4 @@ class StringCalculator
         return (int)$numbers;
     }
 }
+

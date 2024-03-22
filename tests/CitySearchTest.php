@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Root\App\Classes\CitySearch;
+//
+//require_once('./Classes/CitySearch.php');
 
-require_once('./Classes/CitySearch.php');
-
-final class SearchFunctionalityTest extends TestCase
+final class CitySearchTest extends TestCase
 {
     public function testSearchTextIsShorterThanTwoCharacters()
     {

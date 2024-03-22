@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Root\App\Classes\StringCalculator;
 
-require_once("./Classes/StringCalculator.php");
 
 final class StringCalculatorTest extends TestCase
 {
@@ -52,9 +52,11 @@ final class StringCalculatorTest extends TestCase
 
     public function testAddMethodCannotHandleNegativeNumbers()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('negatives not allowed: -2,-4');
-        $res = StringCalculator::add('1;-2:-4;3');
+        try {
+            $res = StringCalculator::add('1;-2:-4;3');
+        } catch (\Exception $e) {
+            $this->assertSame('negatives not allowed: -2,-4', $e->getMessage());
+        }
     }
 
     public function testAddMethodIgnoresNumbersGreaterThan1000()

@@ -8,7 +8,7 @@
 vendor/
 
 # Ignore SRC
-src/
+#src/
 
 # Ignore cache files
 *.cache
