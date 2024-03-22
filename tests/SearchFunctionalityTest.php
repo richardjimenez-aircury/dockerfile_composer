@@ -14,4 +14,9 @@ final class SearchFunctionalityTest extends TestCase
         $res=CitySearch::searchText('Va');
         $this->assertSame(['Valencia', 'Vancouver'], $res);
     }
+    public function testSearchTextIsNotCaseSensitive()
+    {
+        $res=CitySearch::searchText('va');
+        $this->assertSame(['Valencia', 'Vancouver'], $res);
+    }
 }
