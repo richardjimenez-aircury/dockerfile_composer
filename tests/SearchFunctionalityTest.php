@@ -3,20 +3,30 @@
 use PHPUnit\Framework\TestCase;
 
 require_once('./Classes/CitySearch.php');
+
 final class SearchFunctionalityTest extends TestCase
 {
-    public function testSearchTextIsShorterThanTwoCharacters(){
-        $res=CitySearch::searchText('a');
+    public function testSearchTextIsShorterThanTwoCharacters()
+    {
+        $res = CitySearch::searchText('a');
         $this->assertSame(null, $res);
     }
+
     public function testSearchTextIsEqualToOrLongerThanTwoCharacters()
     {
-        $res=CitySearch::searchText('Va');
+        $res = CitySearch::searchText('Va');
         $this->assertSame(['Valencia', 'Vancouver'], $res);
     }
+
     public function testSearchTextIsNotCaseSensitive()
     {
-        $res=CitySearch::searchText('va');
+        $res = CitySearch::searchText('va');
         $this->assertSame(['Valencia', 'Vancouver'], $res);
+    }
+
+    public function testSearchTextIsJustAPartOfTheCityName()
+    {
+        $res = CitySearch::searchText('dam');
+        $this->assertSame(['Rotterdam', 'Amsterdam'], $res);
     }
 }

@@ -10,6 +10,6 @@ class CitySearch
             return null;
         }
 
-        return array_values(array_filter($cities, fn($city) => str_starts_with(strtolower($city), strtolower($text))));
+        return array_values(array_filter($cities, fn($city) => str_contains(strtolower($city), strtolower($text))));
     }
 }
