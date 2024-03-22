@@ -29,4 +29,9 @@ final class SearchFunctionalityTest extends TestCase
         $res = CitySearch::searchText('dam');
         $this->assertSame(['Rotterdam', 'Amsterdam'], $res);
     }
+    public function testSearchTextIsAnAsterisk()
+    {
+        $res= CitySearch::searchText('*');
+        $this->assertSame(['Paris', 'Budapest', 'Skopje', 'Rotterdam', 'Valencia', 'Vancouver', 'Amsterdam', 'Vienna', 'Sydney', 'New York City', 'London', 'Bangkok', 'Hong Kong', 'Dubai', 'Rome', 'Istanbul'], $res);
+    }
 }
