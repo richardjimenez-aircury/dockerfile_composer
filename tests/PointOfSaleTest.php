@@ -23,4 +23,9 @@ final class PointOfSaleTest extends TestCase
         $res= BarCodeScanner::scanBarCode('');
         $this->assertSame('Error: empty barcode', $res);
     }
+    public function testScannerReturnsTheTotalPrice()
+    {
+        $res= BarCodeScanner::scanBarCode('12345') . BarCodeScanner::scanBarCode('23456');
+        $this->assertSame('$19.75', $res);
+    }
 }
