@@ -11,7 +11,7 @@ final class SearchFunctionalityTest extends TestCase
     }
     public function testSearchTextIsEqualToOrLongerThanTwoCharacters()
     {
-        $res=CitySearch::searchText('va');
-        $this->assertSame(['Valencia', 'Vienna'], $res);
+        $res=CitySearch::searchText('Va');
+        $this->assertSame(['Valencia', 'Vancouver'], $res);
     }
 }
