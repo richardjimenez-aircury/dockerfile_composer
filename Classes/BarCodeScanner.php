@@ -5,26 +5,28 @@ class BarCodeScanner
 
     public static function scanBarCode(string $barCode): string
     {
-        $bill=[];
+
+        $totalPrice = 0; // Initialize the total price variable
+
         if ($barCode === '23456') {
-            $bill[]= '12.50';
-        }
-        if ($barCode === '12345') {
-            $bill[]= '7.25';
-        }
-        if ($barCode === '99999') {
-            $bill[]= 'Error: barcode not Found';
+            $totalPrice += 12.50; // Add the price to the total
         }
 
-        $infoToShow='$'.implode('', $bill);
-        if (str_contains($infoToShow, 'Error')) {
-            $infoToShow=preg_replace('/[^a-zA-Z: ]/', '', $infoToShow);
+        if ($barCode === '12345') {
+            $totalPrice += 7.25; // Add the price to the total
         }
-//        else{
-//            $infoToShow = preg_replace('/[^0-9.]/', '', $infoToShow);
-//            $infoToShow = array_map('floatval', explode('$', $infoToShow));
-//            $infoToShow = array_sum($infoToShow);
-//        }
-        return empty($bill) ? 'Error: empty barcode' : (string)$infoToShow;
+
+        if ($barCode === '99999') {
+            return 'Error: barcode not Found';
+        }
+
+        $infoToShow = '$' . $totalPrice; // Format the total price
+
+        if (str_contains($infoToShow, 'Error')) {
+            $infoToShow = preg_replace('/[^a-zA-Z: ]/', '', $infoToShow);
+        }
+
+        return empty($totalPrice) ? 'Error: empty barcode' : (string)$infoToShow;
     }
+
 }
