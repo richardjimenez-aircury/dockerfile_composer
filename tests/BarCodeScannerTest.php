@@ -26,8 +26,7 @@ final class BarCodeScannerTest extends TestCase
     }
     public function testScannerReturnsTheTotalPrice()
     {
-        self::markTestIncomplete();
-        $res= BarCodeScanner::scanBarCode('12345') . BarCodeScanner::scanBarCode('23456');
-        $this->assertSame('$19.75', $res);
+        $res =  BarCodeScanner::scanBarCode('12345') . BarCodeScanner::scanBarCode('23456');
+        $this->assertSame('$19.75',  $res);
     }
 }
