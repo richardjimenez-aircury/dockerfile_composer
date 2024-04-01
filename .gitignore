@@ -5,7 +5,7 @@
 *.pid
 
 # Ignore Vendor folder but allow its installation
-vendor/
+#vendor/
 
 # Ignore SRC
 #src/
